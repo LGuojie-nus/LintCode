@@ -20,6 +20,7 @@ public class Binary_Tree_Paths {
 			print(root.left);
 			print(root.right);
 		}
+		else System.out.printf("%s","# ");
 	}
 
 	private static TreeNode randomTree(int nodes) {
@@ -39,8 +40,6 @@ public class Binary_Tree_Paths {
 		return root;
 	}
 	
-	
-	
 	/********************************
 	 * API for submission
 	 * @param root
@@ -48,17 +47,20 @@ public class Binary_Tree_Paths {
 	 * @param s
 	 * @return
 	 */
-	public static List<String> preorder(TreeNode root,String str,List<String> s) {
-		if(root==null) {return s;}
+	
+
+	
+	public static List<String> preorder(TreeNode root,String str,List<String> list) {
+		if(root==null) {return list;}
 		str+=Integer.toString(root.val);
 		str+="->";
 		if(root.left!=null)
-			preorder(root.left,str,s);
+			preorder(root.left,str,list);
 		if(root.right!=null)
-			preorder(root.right,str,s);
+			preorder(root.right,str,list);
 		if(root.left==null && root.right==null)
-			s.add(str.substring(0,str.length()-2));
-		return s;
+			list.add(str.substring(0,str.length()-2));
+		return list;
 
 	}
 
@@ -71,13 +73,12 @@ public class Binary_Tree_Paths {
 	
 	
 	
-	
 	/****************************
 	 * unit test
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String str=new String();
+		
 		List<String> list = new ArrayList<String>();
 		TreeNode root;
 		//testing module
@@ -87,6 +88,7 @@ public class Binary_Tree_Paths {
 		list=binaryTreePaths(root);
 		for(String s: list)
 			System.out.println(s);
-
+		
+		
 	}
 }
